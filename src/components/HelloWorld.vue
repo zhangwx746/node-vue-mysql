@@ -2,93 +2,30 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+    <el-input v-model="inp"></el-input>
+    <el-button type="primary" @click="com">发射内容</el-button>
+    <p class="show" v-if="pShow"></p>
+    <p class="hide" v-else></p>
   </div>
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
+  props: {
+    msg: 'Welcome to Your Vue.js App',
+    pShow: false
+  },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      inp: ''
+    }
+  },
+  methods: {
+    com () {
+      console.log(this.inp)
+      this.$emit('com', this.inp)
+      this.inp = ''
     }
   }
 }
@@ -109,5 +46,15 @@ li {
 }
 a {
   color: #42b983;
+}
+.show {
+  width: 300px;
+  height: 50px;
+  background-color: #42b983;
+}
+.hide {
+  width: 300px;
+  height: 50px;
+  background-color: violet;
 }
 </style>

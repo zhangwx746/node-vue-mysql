@@ -66,7 +66,8 @@ module.exports = {
         use: extractTextPlugin.extract({
           fallback: 'style-loader',
           use: 'css-loader'
-        })
+        }),
+        include: ['src', '/node_modules/element-ui/lib/']
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -95,12 +96,12 @@ module.exports = {
       {
         test: /\.less$/,
         use: extractTextPlugin.extract({
+          fallback: 'style-loader',
           use: [{
             loader: 'css-loader'
           }, {
             loader: 'less-loader'
-          }],
-          fallback: 'style-loader'
+          }]
         })
       }
     ]

@@ -20,3 +20,21 @@ let jsonWrite = (res, ret) => {
   }
 }
 
+router.post('/login', (req, res) => {
+  let sql = _sql.user.login
+  console.log(sql)
+  let params = req.body
+  console.log(params)
+  console.log(params.name)
+  connection.query(sql, [params.name], (err, data) => {
+    if (err) {
+      console.log(err)
+    } else {
+      jsonWrite(res, data)
+      console.log('登录接口返回', data)
+      res.end('登录接口')
+    }
+  })
+})
+
+module.exports = router

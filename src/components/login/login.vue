@@ -37,15 +37,16 @@ export default {
   },
   methods: {
     loginIn () {
-      this.axios.post('/api/login', {
-        name: this.userInfo.userName,
-        pwd: this.userInfo.pwd
-      }).then(res => {
-        console.log(res)
-      })
+      // this.axios.post('/api/login', {
+      //   name: this.userInfo.userName,
+      //   pwd: this.userInfo.pwd
+      // }).then(res => {
+      //   console.log(res)
+      // })
+      this.$emit('loginIn', this.userInfo)
     },
     toRegister () {
-      this.router.push({ name: 'register' })
+      this.$router.push({ name: 'register' })
     },
     loginHide () {
       this.$emit('loginHide')

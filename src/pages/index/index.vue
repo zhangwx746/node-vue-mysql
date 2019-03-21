@@ -36,6 +36,17 @@ export default {
     },
     loginIn (val) {
       console.log(val)
+      this.axios.post('/api/login', {
+        name: val.userName,
+        pwd: val.pwd
+      }).then(res => {
+        console.log(res)
+        if (res.data.code) {
+          this.loginShow = false
+        } else {
+          console.log(res.data.message)
+        }
+      })
     },
     toLoginIn () { // 打开登录界面
       this.loginShow = true

@@ -23,6 +23,11 @@ const router = new Router({
       component: resolve => require(['@/pages/routerDemo/routerDemo'], resolve)
     },
     {
+      path: '/register',
+      name: 'register',
+      component: resolve => require(['@/pages/register/register'], resolve)
+    },
+    {
       path: '*',
       name: 'notFound',
       component: resolve => require(['@/pages/notFound/notFound'], resolve)

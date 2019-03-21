@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <el-dialog title="登    录" :visible.sync="loginShow" width="25%">
+    <el-dialog title="登    录" :visible.sync="loginShow" width="25%" :close-on-click-modal="false" :show-close="false">
       <el-form class="login_inp_wrap" :model="userInfo">
         <el-form-item label="用户名：" label-width="80px">
           <el-col :span="18">
@@ -16,6 +16,7 @@
       <span slot="footer" class="dialog-footer">
         <el-button @click="loginHide">取 消</el-button>
         <el-button type="primary" @click="loginIn">确 定</el-button>
+        <a class="register" href="javascript:void(0);" @click="toRegister">注册</a>
       </span>
     </el-dialog>
   </div>
@@ -42,7 +43,9 @@ export default {
       }).then(res => {
         console.log(res)
       })
-      this.$emit('loginIn', this.userInfo)
+    },
+    toRegister () {
+      this.router.push({ name: 'register' })
     },
     loginHide () {
       this.$emit('loginHide')

@@ -9,12 +9,18 @@
     <el-button type="primary" @click="toRouterDemo">跳转页面</el-button>
     <Login :loginShow="loginShow" @loginHide="loginHide" @loginIn="loginIn"></Login>
     <el-button type="primary" @click="toLoginIn">登录</el-button>
+    <div v-for="(item, index) in 2" :key="index">
+      <Echarts :eId="'e' + index"></Echarts>
+    </div>
   </div>
 </template>
 <script>
 import Login from '@/components/login/login'
 import MyHeader from '@/components/header/header'
+import Echarts from '@/components/echarts/echarts'
+import { Mixin } from '@/components/mixin.js'
 export default {
+  mixins: [Mixin],
   data () {
     return {
       msg: '1',
@@ -23,11 +29,12 @@ export default {
     }
   },
   components: {
-    Login, MyHeader
+    Login, MyHeader, Echarts
   },
   created () {
     console.log(this.$route)
     this.parmas = this.$route.params.id
+    this.testMethod()
   },
   methods: {
     toRouterDemo (e) {

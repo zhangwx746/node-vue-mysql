@@ -23,7 +23,9 @@
 </template>
 
 <script>
+import { Mixin } from '@/components/mixin.js'
 export default {
+  mixins: [Mixin],
   props: {
     loginShow: false
   },
@@ -32,11 +34,27 @@ export default {
       userInfo: {
         userName: '',
         pwd: ''
-      }
+      },
+      needCopyObj: {
+        name: 'obj',
+        age: 1,
+        bodyInfo: {
+          headerInfo: {
+            name: 'head'
+          }
+        }
+      },
+      copyObj: {}
     }
+  },
+  created () {
   },
   methods: {
     loginIn () {
+      this.copyObj = this.deepCopy(this.needCopyObj)
+      this.copyObj.name = 'my name is copy'
+      console.log(this.copyObj)
+      console.log(this.needCopyObj)
       // this.axios.post('/api/login', {
       //   name: this.userInfo.userName,
       //   pwd: this.userInfo.pwd

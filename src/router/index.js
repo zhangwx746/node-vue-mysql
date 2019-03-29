@@ -28,6 +28,11 @@ const router = new Router({
       component: resolve => require(['@/pages/register/register'], resolve)
     },
     {
+      path: '/slotDemo',
+      name: 'slotDemo',
+      component: resolve => require(['@/pages/slotDemo/slotDemo'], resolve)
+    },
+    {
       path: '*',
       name: 'notFound',
       component: resolve => require(['@/pages/notFound/notFound'], resolve)

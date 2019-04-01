@@ -36,6 +36,8 @@ export default {
     this.parmas = this.$route.params.id
     this.testMethod()
   },
+  mounted () {
+  },
   methods: {
     toRouterDemo (e) {
       console.log(e)

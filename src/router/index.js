@@ -33,6 +33,11 @@ const router = new Router({
       component: resolve => require(['@/pages/slotDemo/slotDemo'], resolve)
     },
     {
+      path: '/nextTickDemo',
+      name: 'nextTickDemo',
+      component: resolve => require(['@/pages/nextTickDemo/nextTickDemo'], resolve)
+    },
+    {
       path: '*',
       name: 'notFound',
       component: resolve => require(['@/pages/notFound/notFound'], resolve)

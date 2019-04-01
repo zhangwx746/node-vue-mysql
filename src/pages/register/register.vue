@@ -39,7 +39,7 @@ export default {
       this.axios.post('/api/register', this.form).then(res => {
         console.log(res)
         if (res.data.code === 1) {
-          console.log('回退')
+          console.log('注册成功')
           this.$router.go(-1)
         }
       })

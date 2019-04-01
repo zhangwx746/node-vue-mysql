@@ -5,8 +5,8 @@
     <sl>
       <p slot="one">this is one</p>
       <template slot-scope="a">
-        <p v-if="a != '赤赤'">{{ a }}</p>
-        <button @click="btnClick(a)">{{ a.value }}</button>
+        <p>{{ a }}</p>
+        <button v-if="a.value != '赤赤'" @click="btnClick(a)">{{ a.value }}</button>
       </template>
     </sl>
   </div>

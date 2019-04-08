@@ -38,6 +38,11 @@ const router = new Router({
       component: resolve => require(['@/pages/nextTickDemo/nextTickDemo'], resolve)
     },
     {
+      path: '/vuexDemo',
+      name: ' vuexDemo',
+      component: resolve => require(['@/pages/vuexDemo/vuexDemo'], resolve)
+    },
+    {
       path: '*',
       name: 'notFound',
       component: resolve => require(['@/pages/notFound/notFound'], resolve)

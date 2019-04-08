@@ -3,6 +3,7 @@ import router from './router'
 import axios from 'axios'
 import vuex from 'vuex'
 import VueAxios from 'vue-axios'
+import store from './store/index.js'
 import Echarts from 'echarts'
 import {
   Button, Input, Row, Col, Dialog, MessageBox,
@@ -32,6 +33,7 @@ Vue.prototype.$echarts = Echarts
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
   render: h => h(App)
 })

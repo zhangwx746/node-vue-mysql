@@ -37,6 +37,11 @@ export default {
     this.testMethod()
   },
   mounted () {
+    // window.onbeforeunload = e => {
+    //   window.localStorage.setItem('a', '456')
+    //   alert('关闭浏览器')
+    //   e.returnValue = '关闭提示'
+    // }
   },
   methods: {
     toRouterDemo (e) {
@@ -45,17 +50,34 @@ export default {
     },
     loginIn (val) {
       console.log(val)
-      this.axios.post('/api/login', {
-        name: val.userName,
-        pwd: val.pwd
-      }).then(res => {
-        console.log(res)
-        if (res.data.code) {
-          this.loginShow = false
-        } else {
-          console.log(res.data.message)
-        }
+      new Promise((resolve, reject) => {
+        this.axios.post('./api/login', {
+          name: val.userName,
+          pwd: val.pwd
+        }).then(res => {
+          if (res.data.code) {
+            resolve()
+          } else {
+            reject(new Error('登录错误'))
+          }
+        })
+      }).then(() => {
+        this.loginShow = false
+        console.log('登录成功')
+      }).catch(err => {
+        console.log(err)
       })
+      // this.axios.post('/api/login', {
+      //   name: val.userName,
+      //   pwd: val.pwd
+      // }).then(res => {
+      //   console.log(res)
+      //   if (res.data.code) {
+      //     this.loginShow = false
+      //   } else {
+      //     console.log(res.data.message)
+      //   }
+      // })
     },
     toLoginIn () { // 打开登录界面
       this.loginShow = true
